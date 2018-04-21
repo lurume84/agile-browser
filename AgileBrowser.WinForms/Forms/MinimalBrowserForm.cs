@@ -57,7 +57,7 @@ namespace AgileBrowser.WinForms.Forms
 
         private void OnBrowserStatusMessage(object sender, StatusMessageEventArgs args)
         {
-            this.InvokeOnUiThreadIfRequired(() => statusLabel.Text = args.Value);
+            
         }
 
         private void OnBrowserLoadingStateChanged(object sender, LoadingStateChangedEventArgs args)
@@ -95,7 +95,7 @@ namespace AgileBrowser.WinForms.Forms
 
         public void DisplayOutput(string output)
         {
-            this.InvokeOnUiThreadIfRequired(() => outputLabel.Text = output);
+            
         }
 
         private void HandleToolStripLayout(object sender, LayoutEventArgs e)

@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MinimalBrowserForm));
             this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.outputLabel = new System.Windows.Forms.Label();
-            this.toolStripContainer.ContentPanel.SuspendLayout();
             this.toolStripContainer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,8 +38,6 @@
             // 
             // toolStripContainer.ContentPanel
             // 
-            this.toolStripContainer.ContentPanel.Controls.Add(this.statusLabel);
-            this.toolStripContainer.ContentPanel.Controls.Add(this.outputLabel);
             this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(730, 465);
             this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer.LeftToolStripPanelVisible = false;
@@ -52,24 +47,6 @@
             this.toolStripContainer.Size = new System.Drawing.Size(730, 490);
             this.toolStripContainer.TabIndex = 0;
             this.toolStripContainer.Text = "toolStripContainer1";
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.statusLabel.Location = new System.Drawing.Point(0, 439);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 13);
-            this.statusLabel.TabIndex = 1;
-            // 
-            // outputLabel
-            // 
-            this.outputLabel.AutoSize = true;
-            this.outputLabel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.outputLabel.Location = new System.Drawing.Point(0, 452);
-            this.outputLabel.Name = "outputLabel";
-            this.outputLabel.Size = new System.Drawing.Size(0, 13);
-            this.outputLabel.TabIndex = 0;
             // 
             // MinimalBrowserForm
             // 
@@ -81,8 +58,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MinimalBrowserForm";
             this.Text = "MinmalBrowserForm";
-            this.toolStripContainer.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer.ContentPanel.PerformLayout();
             this.toolStripContainer.ResumeLayout(false);
             this.toolStripContainer.PerformLayout();
             this.ResumeLayout(false);
@@ -92,8 +67,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStripContainer toolStripContainer;
-        private System.Windows.Forms.Label outputLabel;
-        private System.Windows.Forms.Label statusLabel;
 
     }
 }
