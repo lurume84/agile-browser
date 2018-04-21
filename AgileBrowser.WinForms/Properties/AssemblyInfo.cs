@@ -3,12 +3,7 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("AgileBrowser")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
+[assembly: AssemblyTitle("AgileBrowser.WinForms")]
 [assembly: AssemblyCompany(AssemblyInfo.AssemblyCompany)]
 [assembly: AssemblyProduct(AssemblyInfo.AssemblyProduct)]
 [assembly: AssemblyCopyright(AssemblyInfo.AssemblyCopyright)]
