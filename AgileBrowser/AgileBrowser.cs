@@ -10,8 +10,8 @@ namespace AgileBrowser
 {
     public static class AgileBrowser
     {
-        public const string BaseUrl = "custom://cefsharp";
-        public const string DefaultUrl = BaseUrl + "/home.html";
+        public const string BaseUrl = "http://localhost:4200";
+        public const string DefaultUrl = BaseUrl + "";
         public const string BindingTestUrl = BaseUrl + "/BindingTest.html";
         public const string BindingTestSingleUrl = BaseUrl + "/BindingTestSingle.html";
         public const string LegacyBindingTestUrl = BaseUrl + "/LegacyBindingTest.html";
@@ -52,7 +52,7 @@ namespace AgileBrowser
             //The location where cache data will be stored on disk. If empty an in-memory cache will be used for some features and a temporary disk cache for others.
             //HTML5 databases such as localStorage will only persist across sessions if a cache path is specified. 
             settings.CachePath = "cache";
-            //settings.UserAgent = "CefSharp Browser" + Cef.CefSharpVersion; // Example User Agent
+            settings.UserAgent = "CefSharp Browser" + Cef.CefSharpVersion; // Example User Agent
             //settings.CefCommandLineArgs.Add("renderer-process-limit", "1");
             //settings.CefCommandLineArgs.Add("renderer-startup-dialog", "1");
             //settings.CefCommandLineArgs.Add("enable-media-stream", "1"); //Enable WebRTC
@@ -184,8 +184,8 @@ namespace AgileBrowser
             {
                 throw new Exception("Unable to Initialize Cef");
             }
-
-            Cef.AddCrossOriginWhitelistEntry(BaseUrl, "https", "cefsharp.com", false);
+            
+            Cef.AddCrossOriginWhitelistEntry(BaseUrl, "http", "10.0.106.33", true);
 
             //Experimental option where bound async methods are queued on TaskScheduler.Default.
             //CefSharpSettings.ConcurrentTaskExecution = true;

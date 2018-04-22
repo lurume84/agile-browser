@@ -56,8 +56,8 @@ namespace AgileBrowser.WinForms
 
                 const bool multiThreadedMessageLoop = true;
 
-                //var browser = new BrowserForm(multiThreadedMessageLoop);
-                var browser = new MinimalBrowserForm();
+                var browser = new BrowserForm(multiThreadedMessageLoop);
+                //var browser = new SimpBrowserForm();
                 //var browser = new TabulationDemoForm();
 
                 IBrowserProcessHandler browserProcessHandler;
