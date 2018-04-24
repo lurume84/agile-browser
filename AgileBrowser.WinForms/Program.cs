@@ -17,6 +17,8 @@ namespace AgileBrowser.WinForms
 
             Cef.EnableHighDPISupport();
 
+            string externalDomain = "http://10.0.106.33:8081";
+
             //NOTE: Using a simple sub processes uses your existing application executable to spawn instances of the sub process.
             //Features like JSB, EvaluateScriptAsync, custom schemes require the CefSharp.BrowserSubprocess to function
             if (simpleSubProcess)
@@ -41,7 +43,7 @@ namespace AgileBrowser.WinForms
 
                 Cef.Initialize(settings);
 
-                var browser = new SimpleBrowserForm();
+                var browser = new SimpleBrowserForm(externalDomain);
                 Application.Run(browser);
             }
             else
@@ -56,9 +58,9 @@ namespace AgileBrowser.WinForms
 
                 const bool multiThreadedMessageLoop = true;
 
-                var browser = new BrowserForm(multiThreadedMessageLoop);
-                //var browser = new SimpBrowserForm();
-                //var browser = new TabulationDemoForm();
+                var browser = new BrowserForm(multiThreadedMessageLoop, externalDomain);
+                //var browser = new SimpBrowserForm(externalDomain);
+                //var browser = new TabulationDemoForm(externalDomain);
 
                 IBrowserProcessHandler browserProcessHandler;
 
@@ -74,7 +76,7 @@ namespace AgileBrowser.WinForms
                     browserProcessHandler = new WinFormsBrowserProcessHandler(scheduler);
                 }
 
-                AgileBrowser.Init(osr: false, multiThreadedMessageLoop: multiThreadedMessageLoop, browserProcessHandler: browserProcessHandler);
+                AgileBrowser.Init(osr: false, multiThreadedMessageLoop: multiThreadedMessageLoop, browserProcessHandler: browserProcessHandler, externalDomain: externalDomain);
 
                 Application.Run(browser);
             }

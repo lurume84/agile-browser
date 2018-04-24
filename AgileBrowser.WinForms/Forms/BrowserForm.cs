@@ -16,7 +16,9 @@ namespace AgileBrowser.WinForms
 
         private bool multiThreadedMessageLoopEnabled;
 
-        public BrowserForm(bool multiThreadedMessageLoopEnabled)
+        private string externalDomain;
+
+        public BrowserForm(bool multiThreadedMessageLoopEnabled, string externalDomain)
         {
             InitializeComponent();
 
@@ -31,6 +33,7 @@ namespace AgileBrowser.WinForms
             ResizeEnd += (s, e) => ResumeLayout(true);
 
             this.multiThreadedMessageLoopEnabled = multiThreadedMessageLoopEnabled;
+            this.externalDomain = externalDomain;
         }
 
         private void BrowserFormLoad(object sender, EventArgs e)
@@ -65,7 +68,7 @@ namespace AgileBrowser.WinForms
         {
             browserTabControl.SuspendLayout();
 
-            var browser = new BrowserTabUserControl(AddTab, url, multiThreadedMessageLoopEnabled)
+            var browser = new BrowserTabUserControl(AddTab, url, multiThreadedMessageLoopEnabled, externalDomain)
             {
                 Dock = DockStyle.Fill,
             };

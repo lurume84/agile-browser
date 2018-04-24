@@ -20,7 +20,7 @@ namespace AgileBrowser.WinForms
         private ChromeWidgetMessageInterceptor messageInterceptor;
         private bool multiThreadedMessageLoopEnabled;
 
-        public BrowserTabUserControl(Action<string, int?> openNewTab, string url, bool multiThreadedMessageLoopEnabled)
+        public BrowserTabUserControl(Action<string, int?> openNewTab, string url, bool multiThreadedMessageLoopEnabled, string externalDomain)
         {
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace AgileBrowser.WinForms
             Browser = browser;
 
             browser.MenuHandler = new MenuHandler();
-            browser.RequestHandler = new WinFormsRequestHandler(openNewTab);
+            browser.RequestHandler = new WinFormsRequestHandler(openNewTab, externalDomain);
             browser.JsDialogHandler = new JsDialogHandler();
             browser.DownloadHandler = new DownloadHandler();
             if (multiThreadedMessageLoopEnabled)

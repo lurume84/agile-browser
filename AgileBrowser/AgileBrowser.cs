@@ -32,7 +32,7 @@ namespace AgileBrowser
         private static readonly bool DebuggingSubProcess = Debugger.IsAttached;
         private static string PluginInformation = "";
 
-        public static void Init(bool osr, bool multiThreadedMessageLoop, IBrowserProcessHandler browserProcessHandler)
+        public static void Init(bool osr, bool multiThreadedMessageLoop, IBrowserProcessHandler browserProcessHandler, string externalDomain)
         {
             // Set Google API keys, used for Geolocation requests sans GPS.  See http://www.chromium.org/developers/how-tos/api-keys
             // Environment.SetEnvironmentVariable("GOOGLE_API_KEY", "");
@@ -162,6 +162,7 @@ namespace AgileBrowser
                 IsSecure = true //treated with the same security rules as those applied to "https" URLs
             });
 
+
             settings.RegisterScheme(new CefCustomScheme
             {
                 SchemeName = "localfolder",
@@ -184,8 +185,9 @@ namespace AgileBrowser
             {
                 throw new Exception("Unable to Initialize Cef");
             }
-            
-            Cef.AddCrossOriginWhitelistEntry(BaseUrl, "http", "10.0.106.33", true);
+
+            Uri uri = new Uri(externalDomain);
+            Cef.AddCrossOriginWhitelistEntry(BaseUrl, uri.Scheme, uri.Host, true);
 
             //Experimental option where bound async methods are queued on TaskScheduler.Default.
             //CefSharpSettings.ConcurrentTaskExecution = true;

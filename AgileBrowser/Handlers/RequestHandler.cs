@@ -21,6 +21,13 @@ namespace AgileBrowser.Handlers
 
         private Dictionary<UInt64, MemoryStreamResponseFilter> responseDictionary = new Dictionary<UInt64, MemoryStreamResponseFilter>();
 
+        protected string externalDomain = "http://localhost";
+
+        public RequestHandler(string externalDomain)
+        {
+            this.externalDomain = externalDomain;
+        }
+
         public override bool OnBeforeBrowse(IWebBrowser browserControl, IBrowser browser, IFrame frame, IRequest request, bool isRedirect)
         {
             return false;
@@ -75,6 +82,13 @@ namespace AgileBrowser.Handlers
             {
                 //Referrer is now set using it's own method (was previously set in headers before)
                 request.SetReferrer("http://google.com", ReferrerPolicy.Default);
+            }
+
+            var restLength = "/rest".Length;
+
+            if (url.AbsolutePath.Length >= restLength && string.Equals(url.AbsolutePath.Substring(0, restLength), "/rest", StringComparison.OrdinalIgnoreCase))
+            {
+                request.Url = externalDomain + url.AbsolutePath;
             }
 
             //Example of setting User-Agent in every request.

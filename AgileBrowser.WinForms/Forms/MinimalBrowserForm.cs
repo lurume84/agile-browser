@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using AgileBrowser;
+using AgileBrowser.Handlers;
 using CefSharp;
 using CefSharp.WinForms;
 using CefSharp.WinForms.Internals;
@@ -11,7 +12,9 @@ namespace AgileBrowser.WinForms.Forms
     {
         private ChromiumWebBrowser browser;
 
-        public MinimalBrowserForm()
+        private string externalDomain;
+
+        public MinimalBrowserForm(string externalDomain)
         {
             InitializeComponent();
 
@@ -27,6 +30,8 @@ namespace AgileBrowser.WinForms.Forms
             ResizeEnd += (s, e) => ResumeLayout(true);
 
             Load += OnLoad;
+
+            this.externalDomain = externalDomain;
         }
 
         private void OnLoad(object sender, EventArgs e)
@@ -48,6 +53,7 @@ namespace AgileBrowser.WinForms.Forms
             browser.TitleChanged += OnBrowserTitleChanged;
             browser.AddressChanged += OnBrowserAddressChanged;
             browser.JavascriptObjectRepository.Register("bound", new BoundObject());
+            browser.RequestHandler = new RequestHandler(externalDomain);
         }
 
         private void OnBrowserConsoleMessage(object sender, ConsoleMessageEventArgs args)

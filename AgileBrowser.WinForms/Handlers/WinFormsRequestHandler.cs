@@ -11,9 +11,11 @@ namespace AgileBrowser.WinForms.Handlers
     {
         private Action<string, int?> openNewTab;
 
-        public WinFormsRequestHandler(Action<string, int?> openNewTab)
+        public WinFormsRequestHandler(Action<string, int?> openNewTab, string externalDomain)
+            : base(externalDomain)
         {
             this.openNewTab = openNewTab;
+            this.externalDomain = externalDomain;
         }
 
         public override bool OnOpenUrlFromTab(IWebBrowser browserControl, IBrowser browser, IFrame frame, string targetUrl, WindowOpenDisposition targetDisposition, bool userGesture)

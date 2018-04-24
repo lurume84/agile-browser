@@ -75,6 +75,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +95,8 @@
     <Compile Include="JsSerializableClass.cs" />
     <Compile Include="JsSerializableStruct.cs" />
     <Compile Include="ModelBinding\MethodInterceptorLogger.cs" />
-    <Compile Include="Providers\JIRAOauth1aProvider.cs" />
+    <Compile Include="OAuth\JIRAOauth1aProvider.cs" />
+    <Compile Include="OAuth\OAuth1aAuthenticator.cs" />
     <Compile Include="RequestEventHandler\EventArgs\BaseRequestEventArgs.cs" />
     <Compile Include="RequestEventHandler\EventArgs\CanSetCookieEventArg.cs" />
     <Compile Include="RequestEventHandler\EventArgs\GetAuthCredentialsEventArgs.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Proxy\ProxyConfig.cs" />
     <Compile Include="Handlers\RenderProcessMessageHandler.cs" />
     <Compile Include="ScriptedMethods.cs" />
+    <Compile Include="Security\OpenSslKey.cs" />
     <Compile Include="SimpleClass.cs" />
     <Compile Include="SimpleSubClass.cs" />
     <Compile Include="SubBoundObject.cs" />
